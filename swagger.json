@@ -1,0 +1,70 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Student management"
+    },
+    "host": "localhost:4000",
+    "basePath": "/api",
+    "schemes": [
+        "http",
+        "https"
+    ],
+    "consumes": [
+        "application/json"
+    ],
+    "produces": [
+        "application/json"
+    ],
+    "paths": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "Login"
+                ],
+                "description": "Users login",
+                "parameters": [
+                    {
+                        "name": "users",
+                        "in": "body",
+                        "description": "user login",
+                        "schema": {
+                            "$ref": "#/definitions/loginuser"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "loginuser": {
+            "required": [
+                "user_name",
+                "password"
+            ],
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "user_name": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "password": {
+                            "type": "string",
+                            "uniqueItems": true
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
