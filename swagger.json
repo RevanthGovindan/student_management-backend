@@ -42,6 +42,234 @@
                     }
                 }
             }
+        },
+        "/studentdetails": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "Student details",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/studentmarks": {
+            "get": {
+                "tags": [
+                    "Student"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "Student marks",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/updatestudent": {
+            "post": {
+                "tags": [
+                    "Student"
+                ],
+                "description": "update student",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "updatestudent",
+                        "in": "body",
+                        "description": "update student details",
+                        "schema": {
+                            "$ref": "#/definitions/updatestudent"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/teacherdetails": {
+            "get": {
+                "tags": [
+                    "Teacher"
+                ],
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    }
+                ],
+                "description": "Teacher details",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/updateteacher": {
+            "post": {
+                "tags": [
+                    "Teacher"
+                ],
+                "description": "update Teacher",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "updateTeacher",
+                        "in": "body",
+                        "description": "update Teacher details",
+                        "schema": {
+                            "$ref": "#/definitions/updateTeacher"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/deletestudent/{student_id}": {
+            "delete": {
+                "tags": [
+                    "Teacher"
+                ],
+                "description": "Delete student",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "student_id",
+                        "in": "path",
+                        "description": "student unique id",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/deleteteacher/{teacher_id}": {
+            "delete": {
+                "tags": [
+                    "Admin"
+                ],
+                "description": "Delete teacher",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "teacher_id",
+                        "in": "path",
+                        "description": "teacher unique id",
+                        "required": true
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
+        },
+        "/updatestudentmarks": {
+            "post": {
+                "tags": [
+                    "Teacher and Admin"
+                ],
+                "description": "update student marks",
+                "parameters": [
+                    {
+                        "name": "authorization",
+                        "in": "header",
+                        "type": "string",
+                        "required": true
+                    },
+                    {
+                        "name": "updatemarks",
+                        "in": "body",
+                        "description": "update student marks",
+                        "schema": {
+                            "$ref": "#/definitions/updatestudentmarks"
+                        }
+                    }
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "200": {
+                        "description": "success"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -59,6 +287,119 @@
                             "uniqueItems": true
                         },
                         "password": {
+                            "type": "string",
+                            "uniqueItems": true
+                        }
+                    }
+                }
+            }
+        },
+        "updatestudent": {
+            "required": [
+                "name",
+                "dob",
+                "mother_name",
+                "father_name",
+                "course",
+                "student_id"
+            ],
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "dob": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "mother_name": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "father_name": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "course": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "student_id": {
+                            "type": "string",
+                            "uniqueItems": true
+                        }
+                    }
+                }
+            }
+        },
+        "updateTeacher": {
+            "required": [
+                "name",
+                "dob",
+                "course",
+                "expert_in",
+                "email_id",
+                "years_of_experience",
+                "sub_id"
+            ],
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "dob": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "course": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "expert_in": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "email_id": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "years_of_experience": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "sub_id": {
+                            "type": "string",
+                            "uniqueItems": true
+                        }
+                    }
+                }
+            }
+        },
+        "updatestudentmarks": {
+            "required": [
+                "studend_id",
+                "subject_id",
+                "marks"
+            ],
+            "properties": {
+                "data": {
+                    "type": "object",
+                    "properties": {
+                        "studend_id": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "subject_id": {
+                            "type": "string",
+                            "uniqueItems": true
+                        },
+                        "marks": {
                             "type": "string",
                             "uniqueItems": true
                         }
